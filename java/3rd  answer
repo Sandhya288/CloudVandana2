@@ -1,0 +1,36 @@
+3. Check if the input is pangram or not. (A pangram is a sentence that contains all the 
+alphabets from A to Z)  
+public class PangramChecker { 
+public static boolean isPangram(String str) { 
+// Create a boolean array to track the presence of each letter (a-z) 
+boolean[] alphabetPresent = new boolean[26]; 
+// Convert the input string to lowercase to make it case-insensitive 
+str = str.toLowerCase(); 
+// Iterate through the characters in the string 
+for (int i = 0; i < str.length(); i++) { 
+char c = str.charAt(i); 
+// Check if the character is a lowercase letter 
+if (c >= 'a' && c <= 'z') { 
+// Mark the letter as present 
+alphabetPresent[c - 'a'] = true; 
+} 
+} 
+// Check if all the letters (a-z) are present 
+for (boolean letterPresent : alphabetPresent) { 
+if (!letterPresent) { 
+return false; // If any letter is missing, it's not a pangram 
+} 
+} 
+return true; // All letters are present, so it's a pangram 
+} 
+public static void main(String[] args) { 
+// Example usage 
+String input = "The quick brown fox jumps over the lazy dog"; 
+boolean isPangram = isPangram(input); 
+if (isPangram) { 
+System.out.println("The input is a pangram."); 
+} else { 
+System.out.println("The input is not a pangram."); 
+} 
+} 
+}
